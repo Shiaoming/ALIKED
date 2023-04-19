@@ -1,6 +1,6 @@
 # ALIKED: A Lighter Keypoint and Descriptor Extraction Network via Deformable Transformation
 
-ALIKED is improved based on [ALIKE ](https://github.com/Shiaoming/ALIKE), and it introduces the Sparse Deformable Descriptor Head (SDDH) to extract deformable descriptors efficiently. The ALIKED can extract more robust descriptors than ALIKE. Technical details are described in [this paper](https://arxiv.org/pdf/2304.03608.pdf).
+ALIKED is an improvement on [ALIKE](https://github.com/Shiaoming/ALIKE), which introduces the Sparse Deformable Descriptor Head (SDDH) to efficiently extract deformable descriptors. Compared with ALIKE, ALIKED can extract more robust descriptors in a more efficient way. The technical details are described in [this paper](https://arxiv.org/pdf/2304.03608.pdf).
 
 > ```
 > Xiaoming Zhao, Xingming Wu, Weihai Chen, Peter C.Y. Chen, Qingsong Xu, and Zhengguo Li, "ALIKED: A Lighter Keypoint and Descriptor Extraction Network via Deformable Transformation", IEEE Transactions on Instrumentation & Measurement, 2023.
