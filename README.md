@@ -30,6 +30,11 @@ The required packages are listed in the `requirements.txt` :
 pip install -r requirements.txt
 ```
 
+Build `custom_ops`:
+```shell
+cd custom_ops
+sh build.sh
+```
 
 ## 2. Pretrained models
 
