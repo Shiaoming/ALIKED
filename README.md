@@ -14,6 +14,7 @@ If you use ALIKED in academic work, please cite:
 @article{Zhao2023ALIKED,
     title = {ALIKED: A Lighter Keypoint and Descriptor Extraction Network via Deformable Transformation},
     url = {https://arxiv.org/pdf/2304.03608.pdf},
+    doi = {10.1109/TIM.2023.3271000},
     journal = {IEEE Transactions on Instrumentation & Measurement},
     author = {Xiaoming Zhao, Xingming Wu, Weihai Chen, Peter C.Y. Chen, Qingsong Xu, and Zhengguo Li},
     year = {2023},
