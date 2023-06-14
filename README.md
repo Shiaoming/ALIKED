@@ -16,8 +16,20 @@ If you use ALIKED in academic work, please cite:
     url = {https://arxiv.org/pdf/2304.03608.pdf},
     doi = {10.1109/TIM.2023.3271000},
     journal = {IEEE Transactions on Instrumentation & Measurement},
-    author = {Xiaoming Zhao, Xingming Wu, Weihai Chen, Peter C.Y. Chen, Qingsong Xu, and Zhengguo Li},
+    author = {Zhao, Xiaoming and Wu, Xingming and Chen, Weihai and Chen, Peter C. Y. and Xu, Qingsong and Li, Zhengguo},
     year = {2023},
+    volume = {72},
+    pages = {1-16},
+}
+
+@article{Zhao2022ALIKE,
+    title = {ALIKE: Accurate and Lightweight Keypoint Detection and Descriptor Extraction},
+    url = {http://arxiv.org/abs/2112.02906},
+    doi = {10.1109/TMM.2022.3155927},
+    journal = {IEEE Transactions on Multimedia},
+    author = {Zhao, Xiaoming and Wu, Xingming and Miao, Jinyu and Chen, Weihai and Chen, Peter C. Y. and Li, Zhengguo},
+    month = march,
+    year = {2022},
 }
 ```
 
