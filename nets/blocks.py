@@ -4,7 +4,31 @@ from torch import nn
 from typing import Optional, Callable
 from torch.nn.modules.utils import _pair
 import torchvision
-from custom_ops import get_patches
+
+try:
+    from custom_ops import get_patches
+    with_compiled_get_patches = True
+except:
+    with_compiled_get_patches = False
+    # https://github.com/cvg/LightGlue/blob/edb2b838efb2ecfe3f88097c5fad9887d95aedad/lightglue/aliked.py#L48-L65
+    def get_patches_lg(
+        tensor: torch.Tensor, required_corners: torch.Tensor, ps: int
+    ) -> torch.Tensor:
+        c, h, w = tensor.shape
+        corner = (required_corners - ps / 2 + 1).long()
+        corner[:, 0] = corner[:, 0].clamp(min=0, max=w - 1 - ps)
+        corner[:, 1] = corner[:, 1].clamp(min=0, max=h - 1 - ps)
+        offset = torch.arange(0, ps)
+    
+        kw = {"indexing": "ij"} if torch.__version__ >= "1.10" else {}
+        x, y = torch.meshgrid(offset, offset, **kw)
+        patches = torch.stack((x, y)).permute(2, 1, 0).unsqueeze(2)
+        patches = patches.to(corner) + corner[None, None]
+        pts = patches.reshape(-1, 2)
+        sampled = tensor.permute(1, 2, 0)[tuple(pts.T)[::-1]]
+        sampled = sampled.reshape(ps, ps, -1, c)
+        assert sampled.shape[:3] == patches.shape[:3]
+        return sampled.permute(2, 3, 0, 1)
 
 class DeformableConv2d(nn.Module):
 
@@ -164,7 +188,7 @@ class SDDH(nn.Module):
         self.conv2D = conv2D
         self.mask = mask
 
-        self.get_patches_func = get_patches.apply
+        self.get_patches_func = get_patches.apply if with_compiled_get_patches else get_patches_lg
 
         # estimate offsets
         self.channel_num = 3 * n_pos if mask else 2 * n_pos
